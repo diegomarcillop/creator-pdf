@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <style>
+    body {
+      padding: 0px;
+    }
+    span {
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: 300;
+    }
+    pre {
+      width: auto;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      font-weight: 300;
+      margin: 0px;
+    }
+    .title {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .header {
+      display: table;
+      width: 100%;
+      height: 120px;
+    }
+    .header__detail {
+      display: inline-block;
+      font-size: 10px;
+      line-height: 14px;
+      text-align: center;
+      top: 30px;
+      color: #212121;
+      position: fixed;
+      left: 20%;
+    }
+    .header__order-number {
+      width: 250px;
+      border: 1px solid #dfdada;
+      position: fixed;
+      right: 20px;
+      top: 40px;
+      margin-bottom: 10px;
+    }
+    .header__order-number__text {
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      text-align: center;
+      font-size: 12px;
+      line-height: 16px;
+      color: black;
+      padding-top: 10px;
+      padding-right: 10px;
+    }
+    .detail-client {
+      height: 100px;
+    }
+    .check-detail__item--border {
+      border: 1px solid #dfdada;
+    }
+    .check-detail__item {
+      width: 250px;
+      border: 1px solid #dfdada;
+    }
+    .check-detail-item-small {
+      width: 250px;
+      height: 30px;
+      border: 1px solid #dfdada;
+      margin-left: 10px;
+    }
+    .check-detail__item__row--border {
+      width: 50%;
+      height: 50px;
+      padding: 2px;
+      border: 1px solid #dfdada;
+    }
+    .check-detail__item__row {
+      width: 50%;
+      right: 1%;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+    }
+    .item-row {
+      width: 50%;
+      height: 50px;
+      margin-top: 5px;
+      border-right: 1px solid #d0d0d0;
+      color: #717171;
+      text-align: center;
+    }
+    .item-row-not-border {
+      width: 50%;
+      height: 50px;
+      margin-top: 5px;
+      color: #717171;
+      text-align: center;
+    }
+    .item-row-w100 {
+      width: 100%;
+      height: 50px;
+      margin-top: 5px;
+      padding-left: 6px;
+      text-align: left;
+    }
+    .row-list {
+      height: 100%;
+    }
+    .value {
+      font-size: 10px;
+      color: black;
+      margin-left: 30px;
+      word-wrap: break-word;
+    }
+    .value-observation {
+      font-size: 10px;
+      line-height: 10px;
+      color: black;
+      word-wrap: break-word;
+    }
+    .label {
+      width: 100px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+    .table {
+      margin-top: 5px;
+      border: 1px solid #d0d0d0;
+      height: auto;
+    }
+    .table__row {
+      display: grid;
+      border-bottom: 1px solid #d0d0d0;
+      padding: 2px;
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: bold;
+      color: black;
+    }
+    .table-detail__item-border {
+      border: 1px solid #d0d0d0;
+    }
+    .table-detail__item-border__item-border {
+      padding: 2px;
+      border-bottom: 1px solid #d0d0d0;
+    }
+    .table-detail__item-border__item {
+      padding: 2px;
+    }
+    .table-detail__item-border__item-primary {
+      padding: 5px;
+      background-color: #e9efff;
+    }
+    .table-detail__observation {
+      margin: 5px;
+    }
+    .container-box {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .table-content {
+      width: 100%;
+      font-size: 13px;
+    }
+    .image-logo {
+      width: 60px;
+      height: 60px;
+      padding-top: 20px;
+    }
+    body {
+      border: 1px solid #dfdada;
+      padding: 10px;
+    }
+    .border-right {
+      border-right: 1px solid #dfdada;
+    }
+  </style>
+  <body>
+    <div class="header">
+      <img class="image-logo" src="data:image/png;base64,{{logo}}" alt="Logo" />
+      <div class="header__detail">
+        <pre>
+          <strong>Arepa Technologies SAS</strong>
+          NIT 900.515.209-8
+          CL 99 14 76
+          Tel: (031) 3124091724
+          Bogotá, Colombia
+          exary.chaparro@arepa.co
+        </pre>
+      </div>
+      <div class="header__order-number">
+        <pre class="header__order-number__text">
+          Remisión
+          <strong>No. {{this.orderNumber}}</strong>
+        </pre>
+      </div>
+    </div>
+    <div class="check-detail">
+      <div class="detail-client">
+        <table>
+          <tr class="check-detail__item">
+            <td class="check-detail__item__row--border">
+              <div style="width: 400px; padding-left: 2px;">
+                <span class="label">Señores</span>
+                <span class="value" style="width: 400px"
+                  >{{this.user.name}}</span
+                >
+              </div>
+              <table>
+                <tr>
+                  <td>
+                    <div style="width: 200px">
+                      <span class="label">NIT</span>
+                      <span class="value" style="width: 400px">
+                        {{this.user.document}}
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <div style="width: 200px">
+                      <span class="label">Teléfono</span>
+                      <span class="value" style="width: 400px"
+                        >{{this.store.phone}}</span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 100%">
+                    <div style="width: 200px">
+                      <span class="label">Dirección</span>
+                      <span class="value" style="width: 400px"
+                        >{{this.store.address}}</span
+                      >
+                    </div>
+                  </td>
+                  <td>
+                    <div style="width: 200px">
+                      <span class="label">Ciudad</span>
+                      <span class="value" style="width: 400px"
+                        >{{this.store.city}}</span
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <table class="check-detail-item-small" style="border: 1px solid #dfdada;">
+                <tr>
+                  <td class="border-right" style="width: 50%;">
+                    <span class="label">Fecha Elaboración</span>
+                  </td>
+                  <td style="width: 50%;">
+                    <span class="value">{{this.date.provisionCreatedAt}}</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="table">
+      <div>
+        <table style="width: 100%" class="table__row">
+          <tr style="width: 100%">
+            <td style="width: 10%" class="border-right">Item</td>
+            <td style="width: 40%" class="border-right">Descripción</td>
+            <td style="width: 20%" class="border-right">Código</td>
+            <td style="width: 15%" class="border-right">Cantidad</td>
+            <td style="width: 15%">Vr. Total</td>
+          </tr>
+        </table>
+        <table class="table-content">
+          {{#each items}}
+          <tr style="width: 100%">
+            <td
+              class="border-right"
+              style="width: 10%; border-bottom: 1px solid #dfdada"
+            >
+              <span>{{this.index}}</span>
+            </td>
+            <td
+              class="border-right"
+              style="width: 40%; border-bottom: 1px solid #dfdada"
+            >
+              <span>{{this.description}}</span>
+            </td>
+            <td
+              class="border-right"
+              style="width: 20%; border-bottom: 1px solid #dfdada"
+            >
+              <span>{{this.id}}</span>
+            </td>
+            <td
+              class="border-right"
+              style="width: 15%; border-bottom: 1px solid #dfdada"
+            >
+              <span>{{this.quantity}}</span>
+            </td>
+            <td style="width: 15%; border-bottom: 1px solid #dfdada">
+              <span>{{this.total}}</span>
+            </td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+    <table style="width: 100%; margin-top: 10px">
+      <tr style="width: 100%">
+        <td style="width: 55%"></td>
+        <td style="width: 30%" class="table-detail__item-border">
+          <div class="table-detail__item-border__item-border">
+            <span class="label">Total Bruto</span>
+          </div>
+          <div class="table-detail__item-border__item">
+            <span>IVA 19%</span>
+          </div>
+        </td>
+        <td style="width: 15%" class="table-detail__item-border">
+          <div class="table-detail__item-border__item-border">
+            <span class="value">{{this.total}}</span>
+          </div>
+          <div class="table-detail__item-border__item">
+            <span class="value">{{this.iva}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 55%">
+          <div>
+            <span class="label">Observaciones:</span>
+          </div>
+          <div>
+            <span class="value-observation">{{this.observation}}</span>
+          </div>
+        </td>
+        <td style="width: 30%" class="table-detail__item-border">
+          <div class="table-detail__item-border__item-border">
+            <span>Retefuente 11% </span>
+          </div>
+          <div class="table-detail__item-border__item">
+            <span class="label">Total a Pagar</span>
+          </div>
+        </td>
+        <td style="width: 15%" class="table-detail__item-border">
+          <div class="table-detail__item-border__item-border">
+            <span class="value">{{this.retention}}</span>
+          </div>
+          <div class="table-detail__item-border__item">
+            <span class="value">{{this.total}}</span>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table style="width: 100%" class="container-box">
+      <tr>
+        <td style="width: 150px; padding-right: 20px;">
+          <span>Entregado por: <br /><br /></span>
+          <span><hr /></span>
+        </td>
+        <td style="width: 150px">
+          <span>Recibido por: <br /><br /></span>
+          <span><hr /></span>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
